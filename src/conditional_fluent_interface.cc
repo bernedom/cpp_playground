@@ -1,3 +1,7 @@
+/*
+ Illustrates how a fluent interface can be checked for order of elements;
+*/
+
 #include <type_traits>
 
 template <typename T, bool Move = true, bool Stop = true, bool Pause = true>
