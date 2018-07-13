@@ -1,3 +1,8 @@
+/*
+ An example to illustrate how a compile time check of a fixed size collection could be
+ facilitated using variadic templates and static asserts
+*/
+
 #include <iostream>
 #include <type_traits>
 
