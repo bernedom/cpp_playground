@@ -12,29 +12,26 @@ struct A
 // A
 
 template <typename T>
-constexpr bool check(T a) { return true; }
+constexpr void check(T a) {}
 
 template <typename... Ts>
-constexpr bool check(Ts... list_of_a)
+constexpr void check(Ts... list_of_a)
 {
-  return check(list_of_a...);
+  check(list_of_a...);
 }
 
 template <typename T, typename... Ts>
-constexpr bool check(T a, Ts... list_of_a)
+constexpr void check(T a, Ts... list_of_a)
 {
-  // check<T, Ts...>(a, list_of_a...) && check<Ts...>(list_of_a...);
-  // static_assert(T::id::value == 1, "oops");
-  return check(list_of_a...);
+  check(list_of_a...);
 }
 
 template <typename T, typename T1, typename... Ts>
-constexpr bool check(T t, T1 t1, Ts... list_of_a)
+constexpr void check(T t, T1 t1, Ts... list_of_a)
 {
-  // static_assert(T::id::value != T1::id::value, "No duplicates");
-  // check<T1, Ts...>(t1, list_of_a...);
   static_assert(T::id::value != T1::id::value, "No duplicates");
-  return check(t, list_of_a...) && check(t1, list_of_a...);
+  check(t, list_of_a...);
+  check(t1, list_of_a...);
 }
 
 int main(int, char **)
