@@ -1,5 +1,6 @@
 /*
- An example to illustrate how a compile time check of a fixed size collection could be
+ An example to illustrate how a compile time check of a fixed size collection
+ could be
  facilitated using variadic templates and static asserts
 */
 
@@ -25,12 +26,6 @@ constexpr void check(Ts... list_of_a)
   check(list_of_a...);
 }
 
-template <typename T, typename... Ts>
-constexpr void check(T a, Ts... list_of_a)
-{
-  check(list_of_a...);
-}
-
 template <typename T, typename T1, typename... Ts>
 constexpr void check(T t, T1 t1, Ts... list_of_a)
 {
@@ -45,4 +40,5 @@ int main(int, char **)
   // check(A<1>(), A<1>(), A<2>()); // static assert triggered
   // check(A<1>(), A<2>(), A<2>()); // static assert triggered
   // check(A<1>(), A<2>(), A<1>()); // static assert triggered
+  // check(A<1>(), A<2>(), A<1>(), A<2>());
 }
